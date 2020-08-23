@@ -6,12 +6,12 @@ class Fish extends React.Component {
 
     return (
       <li className="fish-menu">
-        <img src="IMAGE" alt="NAME"/>
+        <img src={image} alt={name}/>
         <h3 className="fish-name">
-          NAME
-          <span className="price">FORMATTED PRICE</span>
+          {name}
+          <span className="price">{price}</span>
         </h3>
-        <p>DESC</p>
+        <p>{desc}</p>
         <button>Add to Cart</button>
       </li>
     );
