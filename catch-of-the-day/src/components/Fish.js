@@ -5,7 +5,7 @@ class Fish extends React.Component {
     const { image, name, price, desc, status } = this.props.details;
 
     return (
-      <li className="fish-menu">
+      <li className="menu-fish">
         <img src={image} alt={name}/>
         <h3 className="fish-name">
           {name}
