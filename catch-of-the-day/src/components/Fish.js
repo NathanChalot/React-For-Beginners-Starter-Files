@@ -2,6 +2,8 @@ import React from 'react';
 
 class Fish extends React.Component {
   render() {
+    const { image, name, price, desc, status } = this.props.details;
+
     return (
       <li className="fish-menu">
         <img src="IMAGE" alt="NAME"/>
