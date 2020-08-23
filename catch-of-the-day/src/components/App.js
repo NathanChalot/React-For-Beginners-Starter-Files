@@ -10,8 +10,8 @@ class App extends React.Component {
         <div className="menu">
           <Header tagline="Hello From Prop"/>
         </div>
-        <Inventory />
         <Order />
+        <Inventory />
       </div>
     );
   }
