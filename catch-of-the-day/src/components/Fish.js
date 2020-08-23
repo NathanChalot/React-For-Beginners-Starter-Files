@@ -3,7 +3,7 @@ import React from 'react';
 class Fish extends React.Component {
   render() {
     return (
-      <li class="fish-menu">
+      <li className="fish-menu">
         <img src="IMAGE" alt="NAME"/>
         <h3 className="fish-name">
           NAME
