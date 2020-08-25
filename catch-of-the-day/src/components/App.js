@@ -41,6 +41,13 @@ class App extends React.Component {
     this.setState({ fishes: fishes });
   }
 
+  updateFish = (key, updatedFish) => {
+    const fishes = this.state.fishes;
+    fishes[key] = updatedFish;
+
+    this.setState({fishes: fishes});
+  }
+
   addToOrder = (key) => {
     const orders = { ...this.state.orders };
     orders[key] = orders[key] + 1 || 1;
