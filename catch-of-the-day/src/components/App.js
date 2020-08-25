@@ -4,12 +4,27 @@ import Inventory from './Inventory';
 import Order from './Order';
 import Fish from './Fish';
 import sampleFishes from '../sample-fishes';
+import base from '../base';
 
 class App extends React.Component {
   state = {
     fishes: {},
     orders: {}
   };
+
+  /* Connect with firebase */
+  componentDidMount() {
+    const storeId = this.props.match.params.storeId;
+    this.ref = base.syncState(`${storeId}/fishes`, {
+      context: this,
+      state: 'fishes'
+    })
+  }
+
+  /* Remove connexion with firebase when unmounting -> to avoid memory leak (check why) */
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
 
   addFish = (fish) => {
     const fishes = { ...this.state.fishes };
