@@ -14,7 +14,8 @@ class Inventory extends React.Component {
             key={key}
             id={key}
             fish={this.props.fishes[key]}
-            updateFish={this.props.updateFish} />
+            updateFish={this.props.updateFish}
+            deleteFish={this.props.deleteFish} />
         )}
       </div>
     );
