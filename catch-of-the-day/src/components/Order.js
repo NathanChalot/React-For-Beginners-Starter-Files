@@ -13,7 +13,7 @@ class Order extends React.Component {
       return (
         <li key={key}>
           Sorry {fish ? fish.name : 'the product'} is not available :(
-          <span onClick={() => this.props.deleteFromOrder(key)}>X</span>
+          <button onClick={() => this.props.deleteFromOrder(key)}>&times;</button>
         </li>
       );
     }
@@ -22,7 +22,7 @@ class Order extends React.Component {
       <li key={key}>
         {count} lbs {fish.name}
         {formatPrice(count * fish.price)}
-        <span onClick={() => this.props.deleteFromOrder(key)}>X</span>
+        <button onClick={() => this.props.deleteFromOrder(key)}>&times;</button>
       </li>
     );
   };
