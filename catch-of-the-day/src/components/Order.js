@@ -5,7 +5,9 @@ class Order extends React.Component {
   renderOrderItem = (key) => {
     const fish = this.props.fishes[key];
     const count = this.props.orders[key];
-    const isAvailable = fish.status === 'available';
+    const isAvailable = fish && fish.status === 'available';
+
+    if (!fish) return null;
 
     if (!isAvailable) {
       return <li key={key}>Sorry {fish ? fish.name : 'the product'} is not available :(</li>
