@@ -12,18 +12,19 @@ class App extends React.Component {
     orders: {}
   };
 
-  /* Connect with firebase */
+  /* Connect with firebase for fishes and load orders from localStorage*/
   componentDidMount() {
     const storeId = this.props.match.params.storeId;
     const orders = localStorage.getItem(storeId);
 
-    this.setState({orders: JSON.parse(orders)});
+    if (orders) {
+      this.setState({orders: JSON.parse(orders)});
+    }
     this.ref = base.syncState(`${storeId}/fishes`, {
       context: this,
       state: 'fishes'
     })
   }
-
   /* Remove connexion with firebase when unmounting -> to avoid memory leak (check why) */
   componentWillUnmount() {
     base.removeBinding(this.ref);
