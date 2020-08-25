@@ -1,8 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { formatPrice } from '../helpers';
 
 class Order extends React.Component {
+  static propTypes = {
+    fishes: PropTypes.shape({
+      fish: PropTypes.shape({
+        image: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        desc: PropTypes.string.isRequired,
+        status: PropTypes.string.isRequired
+      })
+    }),
+    orders: PropTypes.objectOf(PropTypes.number).isRequired,
+    deleteFromOrder: PropTypes.func.isRequired
+  };
+
   renderOrderItem = (key) => {
     const fish = this.props.fishes[key];
     const count = this.props.orders[key];
