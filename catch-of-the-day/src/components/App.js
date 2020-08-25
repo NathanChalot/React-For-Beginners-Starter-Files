@@ -15,6 +15,9 @@ class App extends React.Component {
   /* Connect with firebase */
   componentDidMount() {
     const storeId = this.props.match.params.storeId;
+    const orders = localStorage.getItem(storeId);
+
+    this.setState({orders: JSON.parse(orders)});
     this.ref = base.syncState(`${storeId}/fishes`, {
       context: this,
       state: 'fishes'
@@ -24,6 +27,11 @@ class App extends React.Component {
   /* Remove connexion with firebase when unmounting -> to avoid memory leak (check why) */
   componentWillUnmount() {
     base.removeBinding(this.ref);
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(this.props.match.params.storeId,
+      JSON.stringify(this.state.orders));
   }
 
   addFish = (fish) => {
