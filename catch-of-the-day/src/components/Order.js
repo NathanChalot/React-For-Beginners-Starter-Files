@@ -24,15 +24,34 @@ class Order extends React.Component {
       );
     }
 
+    /*
+    ** We use a key per count that is different,
+    ** got to check why exactly but
+    ** I think it's to force react to render
+    ** another item instead of rerendering in place
+    **
+    ** note 2: I use a different key for the count instead of just count
+    ** just to try it out and because I like it better that way
+    */
     return (
       <CSSTransition
         classNames="order"
         key={key}
         timeout={{enter: 250, exit: 250}}>
         <li key={key}>
-          {count} lbs {fish.name}
-          {formatPrice(count * fish.price)}
-          <button onClick={() => this.props.deleteFromOrder(key)}>&times;</button>
+          <span>
+            <TransitionGroup component="span" className="count">
+              <CSSTransition
+                classNames="count"
+                key={`${key}Counter${count}`}
+                timeout={{enter: 250, exit: 250}}>
+                <span>{count}</span>
+              </CSSTransition>
+            </TransitionGroup>
+            lbs {fish.name}
+            {formatPrice(count * fish.price)}
+            <button onClick={() => this.props.deleteFromOrder(key)}>&times;</button>
+          </span>
         </li>
       </CSSTransition>
     );
