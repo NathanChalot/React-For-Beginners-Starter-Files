@@ -24,7 +24,7 @@ class Inventory extends React.Component {
     })
   };
 
-  static state = {
+  state = {
     uid: null,
     owner: null
   };
